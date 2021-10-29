@@ -1,19 +1,32 @@
 package Lab1;
 
+
+import java.util.Scanner;
 public class DiffBetweenSumoftheSquaresandSquaresofthesum {
-	@SuppressWarnings("unused")
-	public static void main(String args[]) {
-		int n = 10,diff,sumofsquares=0,squaresofsum=0;
-		for(int i=1;i<=n;i++) {
-			sumofsquares=sumofsquares+(i*i);
-			return;
+	public static void main(String[] args) {
+
+		Scanner scn = new Scanner(System.in);
+		System.out.println("Enter a range: ");
+		int n = scn.nextInt();
+		System.out.println("Difference between sum of square and square of sum is: " + calculateDifference(n));
+
+		scn.close();
+	}
+
+	// sum of the first n natural numbers.
+	static int calculateDifference(int n) {
+		int sum1 = 0;
+		int sum2 = 0;
+		int difference = 0;
+
+		for (int i = 0; i <= n; i++) {
+			sum1 += (i * i);
+			sum2 += i;
 		}
-		for(int i=1;i<=n;i++) {
-			int sum=(n*(n+1)*(2*n+1))/6;
-			squaresofsum=(sum*sum);
-			return;
-		}
-		diff=(sumofsquares-squaresofsum);
-		System.out.println("Diff Between Sum of Squares and Squares of Sum =" + diff);
+		int squareOfSum = (sum2 * sum2);
+		difference = squareOfSum - sum1;
+		return difference;
+
+
 	}
 }
