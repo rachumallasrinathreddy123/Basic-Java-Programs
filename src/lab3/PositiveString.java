@@ -1,46 +1,33 @@
 package lab3;
 
-import java.util.Arrays;
 import java.util.Scanner;
 public class PositiveString {
-	static void main(String[] args) {
+	static boolean isAlphabaticOrder(String s) {
+		int n = s.length();
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter a string to check it is positive string or not: ");
-		String str = sc.nextLine();
+		for (int i = 1; i < n; i++) {
 
-		// check whether the string is a positive string or not
-		if (isAlphabaticOrder(str)) {
-			System.out.println(str + " is a positive string");
-		} else {
-			System.out.println(str + " is not a positive string");
+			// if element at index 'i' is less 123than the element at index 'i-1' then the string is not sorted
+			if (s.charAt(i) < s.charAt(i - 1)) {
+				return false;
+			}
 		}
 
+		return true;
 	}
 
-	// Method that checks whether the string is in alphabetical order or not
-	public static boolean isAlphabaticOrder(String str) {
-
-		// length of the string
-		int length = str.length();
-
-		// Create a char array of length as string
-		char chars[] = new char[length];
-
-		// assign the string to char array
-		for (int i = 0; i < length; i++) {
-			chars[i] = str.charAt(i);
+// Driver code
+	static public void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter a string");
+		String s= sc.nextLine();   
+		// check whether the string is
+		// in alphabetical order or not
+		if (isAlphabaticOrder(s)) {
+			System.out.println("Yes");
+		} else {
+			System.out.println("No");
 		}
-
-		// sort the char array
-		Arrays.sort(chars);
-
-		// check if the char array is equal to string or not
-		for (int i = 0; i < length; i++) {
-			if (chars[i] != str.charAt(i))
-				return false;
-		}
-		return true;
 	}
 
 }
